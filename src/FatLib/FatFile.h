@@ -653,6 +653,14 @@ class FatFile {
    * the value false is returned for failure.
    */
   bool printModifyDateTime(print_t* pr);
+  /** Print a file's modify timestamp as YYYYMMDDHHmmSS
+   *
+   * \param[in] pr Print stream for output.
+   *
+   * \return The value true is returned for success and
+   * the value false is returned for failure.
+   */
+  bool printModifyTimestamp(print_t* pr);
   /** Print a file's name
    *
    * \param[in] pr Print stream for output.

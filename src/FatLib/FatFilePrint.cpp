@@ -240,6 +240,25 @@ fail:
   return false;
 }
 //------------------------------------------------------------------------------
+bool FatFile::printModifyTimestamp(print_t* pr) {
+  dir_t dir;
+  if (!dirEntry(&dir)) {
+    DBG_FAIL_MACRO;
+    goto fail;
+  }
+  printU32(pr, FAT_YEAR(dir.lastWriteDate));
+  print2u(pr, FAT_MONTH(dir.lastWriteDate));
+  print2u(pr, FAT_DAY(dir.lastWriteDate));
+  print2u(pr, FAT_HOUR(dir.lastWriteTime));
+  print2u(pr, FAT_MINUTE(dir.lastWriteTime));
+  print2u(pr, FAT_SECOND(dir.lastWriteTime));
+  return true;
+
+fail:
+  return false;
+
+}
+//------------------------------------------------------------------------------
 size_t FatFile::printFileSize(print_t* pr) {
   char buf[11];
   char *ptr = buf + sizeof(buf);
